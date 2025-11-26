@@ -23,8 +23,38 @@ button {
 	cursor: pointer;
 }
 
+/* Certificate Image Styling */
+.certificate {
+	text-align: center;
+	margin: 20px 0;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cert-img {
+	max-width: 100%;
+	width: 300px;
+	height: auto;
+	border: 2px solid #333;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Dark Theme */
 body.dark {
 	background-color: #121212;
 	color: #f5f5f5;
+}
+
+/* Dark Theme - Certificate */
+body.dark .certificate {
+	background-color: #1e1e1e;
+	box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .cert-img {
+	border: 2px solid #f5f5f5;
+	box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
