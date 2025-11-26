@@ -25,7 +25,7 @@ button {
 
 /* Certificate Image Styling */
 .certificate {
-	text-align: center;
+	text-align: left;
 	margin: 20px 0;
 	padding: 20px;
 	background-color: #fff;
@@ -35,7 +35,7 @@ button {
 
 .cert-img {
 	max-width: 100%;
-	width: 100px;
+	width: 150px;
 	height: auto;
 	border: 2px solid #333;
 	border-radius: 8px;
