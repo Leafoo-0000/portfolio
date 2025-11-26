@@ -34,7 +34,7 @@ button {
 }
 
 .cert-img {
-	max-width: 80%;
+	max-width: 100%;
 	width: 100px;
 	height: auto;
 	border: 2px solid #333;
