@@ -12,9 +12,51 @@ header {
 	margin-bottom: 30px;
 }
 
+.hero {
+	background-color: #00bfa5;
+	padding: 20px;
+	border-radius: 10px;
+	color: white;
+}
+
+.achievements {
+    /* These properties create the colored box */
+    background-color: #2c5040; /* A dark color for the box */
+    padding: 30px;             /* Space inside the box */
+    border-radius: 10px;       /* Rounded corners */
+    color: white;              /* Ensures text inside is white/readable */
+    margin: 30px auto;         /* Adds space around the box */
+}
+
+#projects {
+	/* These properties create the colored box */
+    background-color: #034125; /* A dark color for the box */
+    padding: 30px;             /* Space inside the box */
+    border-radius: 10px;       /* Rounded corners */
+    color: white;              /* Ensures text inside is white/readable */
+    margin: 30px auto;         /* Adds space around the box */
+}
+#project a {
+	color: #00e5c4;
+	text-decoration: none;
+	
+}
+
+
 #profile-img {
-	width: 150px;
-	border-radius: 50%;
+	width: 8rem;
+	border-radius: 80%;
+	zoom: 1.5;
+}
+
+/*Footer Styling*/
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #00bfa5;
+    color: white;
+    font-size: 1em;
+	
 }
 
 button {
@@ -24,7 +66,7 @@ button {
 }
 
 /* Achievements Section */
-#achievements ul {
+div.certificate ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 20px;
@@ -55,6 +97,48 @@ button {
 	border: 2px solid #333;
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Shared button styles for hero buttons and the top/other buttons */
+.btn, .hero button, #home, #catalogue {
+	padding: 10px 20px;
+	cursor: pointer;
+	background-color: #004d40;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	background-image: linear-gradient(to right, rgb(25, 187, 141) 0%, rgb(8, 167, 188) 50%, rgb(25, 187, 141) 100%);
+	box-shadow: rgb(0, 0, 0) 5px 5px 10px 0px;
+	border: 2px solid rgb(28, 110, 164);
+	display: inline-block;
+}
+
+.hero button:hover {
+	background: #09cbaa;
+}
+.hero button:active {
+	background: #10e1be;
+}
+.hero button:focus {
+	outline: none;
+}
+
+.parent-container {
+	display: flex;
+	justify-content: center;
+	gap: 20px; /* Space between buttons */
+}
+
+/* #home keeps its absolute positioning; override display/margin if needed */
+#home {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: block; /* absolute element should be block */
+	margin-top: 0;
+}
+
+#catalogue {
+	margin-top: 10px;
 }
 
 /* Dark Theme */
