@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Student Portfolio</title>
-      <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-      <header class="hero">
-         <h1 id="name">Basil Ralph A. Birondo</h1>
-         <img src="Image/profile_pic.png" alt="Profile" id="profile-img">
-         <p id="course-year">Comupter Science - 2nd Year</p>
-         <button id="theme-toggle">Switch Theme</button>
-      </header>
-      
-      <div class ="achievements">
-         <section id="certificate">
-         <h2>Achievements/Certifications</h2>
-         
-         <ul>
-            <li><h3>Java Certificate</h3>
-               <img src="Image/Java Cert.png" alt="Java Certificate" class="cert-img">
-            </li>
-            <li>Achievement 2</li>
-            <li>Achievement 3</li>
-         </ul>
-      </section>
-      </div>
-      <div>
-         <section id="projects">
-            <h2>Previous Projects</h2>
-            <ul>
-               <li>
-                  <strong>Easy-E (Event Management System)</strong>
-                  <br>
-                  <a href="https://github.com/Leafoo-0000/Easy-E" target="_blank">View on GitHub</a>
-               </li>
-               <li>Project 2</li>
-               <li>Project 3</li>
-            </ul>
-         </section>
-      </div>
-      
-      <div class="Assesments">
-         <section id="Module Assesments"></section>
-         <h2>Module Assesments</h2>
-         <ul>
-            <li><a href="https://leafoo-0000.github.io/GreenSense/LandingPage.html" target="_blank">IT103 Case Study M1 F2 GreenSense Landing Page</a></li>
-            <li><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html" target="_blank">IT103 Week 3 Machine Problem 1: ReplaceAll</a></li>
-            <li><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html" target="_blank">IT103 Week 3 Machine Problem 2: SearchWord</a></li>
-            
-            
-         </section>
-      </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1 id="name">Basil Ralph A. Birondo</h1>
+    <img src="Image/profile_pic.png" alt="Profile" id="profile-img">
+    <p id="course-year">Computer Science - 2nd Year</p>
+    <button id="theme-toggle">Switch Theme</button>
+  </header>
 
-      <div>
-         <input type="button" id="catalogue" value="Go to Catalogue" onclick="location.href='catalogue.html'">
-      </div>
-      <script src="script.js"></script>
-   </body>
-   <br>
-   <footer>
-      <p>&copy; 2024 Basil Ralph A. Birondo. All rights reserved.</p>
+  <main>
+    <section class="achievements card">
+      <h2>Achievements / Certifications</h2>
+      <!-- NOTE: add class "tile-list" and data-section="achievements" -->
+      <ul class="tile-list" data-section="achievements" id="portfolio-achievements">
+        <li class="tile">
+          <h3>Java Certificate</h3>
+          <img src="Image/Java Cert.png" alt="Java Certificate" class="cert-img">
+        </li>
+        <li class="tile">Achievement 2</li>
+        <li class="tile">Achievement 3</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Previous Projects</h2>
+      <ul class="tile-list" data-section="projects" id="portfolio-projects">
+        <li class="tile">
+          <strong>Easy-E (Event Management System)</strong><br>
+          <a href="https://github.com/Leafoo-0000/Easy-E" target="_blank">View on GitHub</a>
+        </li>
+        <li class="tile">Project 2</li>
+        <li class="tile">Project 3</li>
+      
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Module Assessments</h2>
+      <ul class="tile-list" data-section="assessments" id="portfolio-assessments">
+        <li class="tile"><a href="https://leafoo-0000.github.io/GreenSense/LandingPage.html" target="_blank">IT103 Case Study M1 F2 GreenSense Landing Page</a></li>
+        <li class="tile"><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html" target="_blank">MP1: ReplaceAll</a></li>
+        <li class="tile"><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html" target="_blank">MP2: SearchWord</a></li>
+      </ul>
+    </section>
+
+   <div class="catalogue-section">
+      <input type="button" id="catalogue" class="btn" value="Go to Catalogue" onclick="location.href='catalogue.html'"> 
+      <p id="check-catalogue">Check out the catalogue to see all items</p>
+   </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Basil Ralph A. Birondo. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

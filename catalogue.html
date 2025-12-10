@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catalogue</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div>
-        <h1>Catalogue Page</h1>
-        <p>This is the catalogue page of the student portfolio.</p>
-        <input type="button" id="home" value="Go to Home" onclick="location.href='index.html'">
-    </div>
+  <header class="hero">
+    <h1>Catalogue</h1>
+    <button id="theme-toggle">Switch Theme</button>
+    <br><br>
+    <input type="button" id="home" class="btn" value="Go to Home" onclick="location.href='index.html'">
+  </header>
 
-    <div>
-        <section id="items">
-            <h2>Items in Catalogue</h2>
-            <ul>
-                <li><a href="https://leafoo-0000.github.io/GreenSense/LandingPage.html" target="_blank">IT103 Case Study M1 F2 GreenSense Landing Page</a></li>
-                <li><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html" target="_blank">IT103 Week 3 Machine Problem 1: ReplaceAll</a></li>
-                <li><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html" target="_blank">IT103 Week 3 Machine Problem 2: SearchWord</a></li>
-            </ul>
-        </section>
-    
+  <main id="catalogue-main" style="padding: 20px;">
+    <p>Below are all extra items moved from each portfolio category.</p>
+
+
+    <section class="card">
+      <h2>Achievements</h2>
+      <ul id="catalogue-achievements" class="catalogue-list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Projects</h2>
+      <ul id="catalogue-projects" class="catalogue-list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Assessments</h2>
+      <ul id="catalogue-assessments" class="catalogue-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Basil Ralph A. Birondo. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
