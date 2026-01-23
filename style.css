@@ -87,6 +87,15 @@ ul.tile-list > li.tile {
   color: #1d1d1d;
 }
 
+#portfolio-module-projects .tile {
+  background: #f0f4f8;
+  display: flex;
+  justify-content: center; /* Horizontal center */
+  align-items: center;     /* Vertical center */
+  text-align: center;
+  height: 100px;
+}
+
 .tile img.cert-img {
   max-width: 100%;
   width: 100%;
@@ -152,6 +161,7 @@ button.view-more {
     flex: 1 1 100%;
   }
 }
+
 
 /* ---------- DARK MODE ---------- */
 body.dark {
