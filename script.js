@@ -1,4 +1,6 @@
-// SINGLE SOURCE OF TRUTH DATA STORE
+// =========================================================================
+// 1. SINGLE SOURCE OF TRUTH DATA STORE (Hardcoded Database Layer)
+// =========================================================================
 const PORTFOLIO_DATA = {
   achievements: [
     {
@@ -7,10 +9,10 @@ const PORTFOLIO_DATA = {
       category: "achievement",
       year: 2,
       term: 1,
-      link: "https://github.com/...",
-      image: "Image/Certificates/Java_Cert.png",
+      link: null,
+      image: "Image/Certificates/Java Cert.png",
       description: "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
-      featured: false,
+      featured: true,
       tags: ["Java", "Swing", "OOP"]
     },
     {
@@ -35,9 +37,9 @@ const PORTFOLIO_DATA = {
       term: 3,
       link: "https://github.com/Leafoo-0000/Easy-E/",
       image: null, 
-      description: "A student support and task management web application featuring algorithmic prioritization mechanics.",
+      description: "A comprehensive event platform designed to streamline room bookings, scheduling matrix constraints, and student-led college activities.",
       featured: true,
-      tags: ["Next.js", "React", "Supabase"]
+      tags: ["Java", "Swing", "SQL"]
     },
     {
       id: "Just-Do-It",
@@ -47,19 +49,79 @@ const PORTFOLIO_DATA = {
       term: 2,
       link: "https://Just-Do-It.vercel.app/",
       image: null, 
-      description: "A student support and task management web application featuring algorithmic prioritization mechanics.",
+      description: "A sustainability habit tracker application utilizing milestone counters to reinforce eco-friendly routines and personal tracking metrics.",
       featured: true,
       tags: ["Next.js", "React", "Supabase"]
+    },
+    {
+      id: "AtiCao",
+      title: "AtiCao: Davao IoT Cacao Disease Risk Monitor",
+      category: "project",
+      year: 2,
+      term: 2,
+      link: "https://github.com/Yami2Danchou/aticao-project",
+      image: null, 
+      description: "An IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
+      featured: true,
+      tags: ["Java", "Mobile App", "Machine Learning", "IoT"]
     }
   ],
-  assessments: []
+  assessments: [
+    {
+      id: "asm-it103-greensense",
+      title: "IT103 Case Study: GreenSense",
+      category: "assessment",
+      year: 1,
+      term: 1,
+      link: "https://leafoo-0000.github.io/GreenSense/LandingPage.html",
+      image: null,
+      description: "An interactive web case study layout designed to analyze interface designs for green tracking and environmental sustainability systems.",
+      featured: true,
+      tags: ["HTML", "CSS", "UI/UX", "Case Study"]
+    },
+    {
+      id: "asm-mp1-replaceall",
+      title: "MP1: ReplaceAll",
+      category: "assessment",
+      year: 1,
+      term: 2,
+      link: "https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html",
+      image: null,
+      description: "A client-side laboratory machine problem implementing live DOM manipulation and programmatic substring text replacement algorithms.",
+      featured: false,
+      tags: ["JavaScript", "DOM Manipulation", "Strings"]
+    },
+    {
+      id: "asm-mp2-searchword",
+      title: "MP2: SearchWord",
+      category: "assessment",
+      year: 1,
+      term: 2,
+      link: "https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html",
+      image: null,
+      description: "A logical programming exercise focused on building string index parsing and text sequence tracking utilities.",
+      featured: false,
+      tags: ["JavaScript", "Search Algorithms", "Logic"]
+    },
+    {
+      id: "asm-extra-1",
+      title: "Extra Assessment 1",
+      category: "assessment",
+      year: 1,
+      term: 3,
+      link: null,
+      image: null,
+      description: "A milestone checkpoint tracking diagnostic software engineering proficiency or course baseline metrics.",
+      featured: false,
+      tags: ["Testing", "Milestone"]
+    }
+  ]
 };
 
 // =========================================================================
 // 2. SYSTEM ROUTER & INITIALIZATION ENGINE
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Core Layout Features
   initGlobalTheme();
 
   // Detect Homepage UI Footprint (index.html)
@@ -84,13 +146,11 @@ function renderHomepageShowcase() {
   if (projectList) projectList.innerHTML = "";
   if (achievementList) achievementList.innerHTML = "";
 
-  // Filter and draw pinned featured projects
   const featuredProjects = PORTFOLIO_DATA.projects.filter(p => p.featured);
   featuredProjects.forEach(project => {
     projectList.innerHTML += createCardHTML(project);
   });
 
-  // Filter and draw pinned featured certificates
   const featuredAchievements = PORTFOLIO_DATA.achievements.filter(a => a.featured);
   featuredAchievements.forEach(achievement => {
     achievementList.innerHTML += createCardHTML(achievement);
@@ -101,7 +161,6 @@ function renderHomepageShowcase() {
 // 4. ENGINE B: TIMELINE ARCHIVE RENDERING LAYER (12-Bucket Matrix)
 // =========================================================================
 function renderArchiveTimeline() {
-  // Reset all 12 buckets back to clear states, re-injecting clean titles
   for (let y = 1; y <= 4; y++) {
     for (let t = 1; t <= 3; t++) {
       const bucket = document.getElementById(`bucket-y${y}-t${t}`);
@@ -111,7 +170,6 @@ function renderArchiveTimeline() {
     }
   }
 
-  // Flatten all data arrays into a single chronological rendering sequence
   const allTimelineItems = [
     ...PORTFOLIO_DATA.projects,
     ...PORTFOLIO_DATA.achievements,
@@ -120,7 +178,6 @@ function renderArchiveTimeline() {
 
   const bucketRegistry = {};
 
-  // Route items directly to their designated Year/Term DOM element boxes
   allTimelineItems.forEach(item => {
     const bucketId = `bucket-y${item.year}-t${item.term}`;
     const bucketElement = document.getElementById(bucketId);
@@ -131,7 +188,6 @@ function renderArchiveTimeline() {
     }
   });
 
-  // Re-verify all buckets; map empty state notice cards if a block contains no entries
   for (let y = 1; y <= 4; y++) {
     for (let t = 1; t <= 3; t++) {
       const targetId = `bucket-y${y}-t${t}`;
@@ -148,23 +204,23 @@ function renderArchiveTimeline() {
 // =========================================================================
 function createCardHTML(item) {
   const imageMarkup = item.image ? `<img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:6px; margin-bottom:10px; object-fit:cover;" />` : '';
-  const titleMarkup = item.link ? `<a href="${item.link}" target="_blank" class="item-title-link">${item.title}</a>` : item.title;
+  const titleMarkup = item.link ? `<a href="${item.link}" target="_blank" class="tile-title-link">${item.title}</a>` : item.title;
   
-  // Custom context branding parameters mapping to your styles
-  const typeColor = item.category === 'project' ? 'var(--accent-blue, #00bcd4)' : item.category === 'achievement' ? '#4caf50' : '#ff9800';
-  const tagBadges = item.tags.map(t => `<span class="badge" style="background:rgba(255,255,255,0.06); font-size:0.75rem; padding:3px 8px; border-radius:4px; border:1px solid rgba(255,255,255,0.08);">${t}</span>`).join('');
+  // Directly bind color variables mapped from your root tokens
+  const typeColor = `var(--color-${item.category})`;
+  const tagBadges = item.tags.map(t => `<span class="tile-tag-badge">${t}</span>`).join('');
 
   return `
-    <div class="portfolio-item-card" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:14px; border-radius:10px; margin-top:12px;">
+    <li class="tile card-${item.category}">
       ${imageMarkup}
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span style="font-size:0.7rem; text-transform:uppercase; font-weight:bold; letter-spacing:0.5px; color:${typeColor};">${item.category}</span>
+        <span style="font-size:0.75rem; text-transform:uppercase; font-weight:bold; letter-spacing:0.5px; color:${typeColor};">${item.category}</span>
         ${item.featured ? '<span style="color:#ffd700; font-size:0.8rem;">★ Featured</span>' : ''}
       </div>
-      <h5 style="margin:4px 0; font-size:1.05rem; font-weight:600;">${titleMarkup}</h5>
-      <p style="font-size:0.88rem; opacity:0.75; margin:6px 0 12px 0; line-height:1.4;">${item.description}</p>
-      <div style="display:flex; flex-wrap:wrap; gap:6px;">${tagBadges}</div>
-    </div>
+      <h5 style="margin:4px 0; font-size:1.1rem; font-weight:600;">${titleMarkup}</h5>
+      <p class="tile-description">${item.description}</p>
+      <div class="tag-container">${tagBadges}</div>
+    </li>
   `;
 }
 
@@ -180,7 +236,7 @@ function setupArchiveFilters() {
   function executeFilterCycle() {
     const query = searchInput.value.toLowerCase().trim();
     const activeCategory = selectFilter.value;
-    const cards = document.querySelectorAll(".portfolio-item-card");
+    const cards = document.querySelectorAll(".tile");
 
     cards.forEach(card => {
       const innerText = card.textContent.toLowerCase();
@@ -190,7 +246,7 @@ function setupArchiveFilters() {
       const matchesCategory = (activeCategory === "all" || typeLabel === activeCategory);
 
       if (matchesSearch && matchesCategory) {
-        card.style.display = "block";
+        card.style.display = "flex"; // Restores structural alignment layout rules
       } else {
         card.style.display = "none";
       }
@@ -207,11 +263,10 @@ function setupArchiveFilters() {
 function initGlobalTheme() {
   const themeToggleBtn = document.getElementById("theme-toggle");
   
-  // Synchronize state via a clean preference reference string
   if (localStorage.getItem("portfolio_theme_state") === "light") {
     document.body.classList.remove("dark");
   } else {
-    document.body.classList.add("dark"); // System defaults to Dark Mode
+    document.body.classList.add("dark");
   }
 
   if (themeToggleBtn) {
