@@ -1,10 +1,46 @@
-/* ---------- GLOBAL BASE ---------- */
+/* ---------- DESIGN CONSTANTS & ENGINE ---------- */
+:root {
+  --primary-navy: #1e293b;
+  --accent-blue: #3b82f6;
+  --bg-gradient-start: #b7e9ff;
+  --bg-gradient-mid: #a2e1f8;
+  --bg-gradient-end: #d8f0fb;
+  --card-bg: #293241;
+  --card-text: #e0e6ed;
+  --tile-bg: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
+  --tile-text: #1d1d1d;
+  --badge-bg: #d6eef7;
+  --badge-text: #11405a;
+  
+  /* Archetype Border Accents */
+  --color-project: #3b82f6;
+  --color-achievement: #10b981;
+  --color-assessment: #8b5cf6;
+}
+
+body.dark {
+  --primary-navy: #0f172a;
+  --accent-blue: #60a5fa;
+  --bg-gradient-start: #0d1117;
+  --bg-gradient-mid: #111827;
+  --bg-gradient-end: #0d1117;
+  --card-bg: #1e293b;
+  --card-text: #f1f5f9;
+  --tile-bg: #1e293b;
+  --tile-text: #f8fafc;
+  --badge-bg: #1e3a8a;
+  --badge-text: #93c5fd;
+}
+
+/* ---------- GLOBAL SITE BASE ---------- */
 body {
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #b7e9ff 0%, #a2e1f8 42%, #d8f0fb 100%);
-  color: #1d1d1d;
+  background: radial-gradient(circle at top, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 42%, var(--bg-gradient-end) 100%);
+  color: var(--tile-text);
   margin: 0;
   padding: 20px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
@@ -14,189 +50,137 @@ header {
 
 .hero {
   background: linear-gradient(135deg, #1c5f86, #11405a);
-  padding: 28px 20px;
+  padding: 35px 20px;
   border-radius: 18px;
   color: white;
   box-shadow: 0 12px 30px rgba(17, 64, 90, 0.24);
 }
 
-.hero p {
-  margin: 0.5rem 0 0;
-}
-
-#name {
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.02em;
-}
-
-/* Profile image */
 #profile-img {
-  width: 8rem;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  zoom: 1.5;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1.2rem;
   background-color: #18354a;
   color: white;
-  font-size: 1em;
+  font-size: 0.95rem;
   border-radius: 12px;
-  margin-top: 24px;
+  margin-top: 40px;
 }
 
-/* ---------- BUTTONS ---------- */
+/* ---------- INTERACTIVE EMPOWERMENT (BUTTONS) ---------- */
 button, .btn {
-  padding: 10px 20px;
+  padding: 10px 22px;
   cursor: pointer;
-  background-image: linear-gradient(to right, #1aa6b7, #2f8fb1);
+  background: linear-gradient(to right, #1aa6b7, #2f8fb1);
   color: white;
   border-radius: 6px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
-  border: 2px solid rgba(255,255,255,0.2);
-  display: inline-block;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-weight: 600;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.btn.small {
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  margin-top: 8px;
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
 }
 
-/* ---------- CARD SECTIONS ---------- */
+/* ---------- SEMANTIC CONTAINMENT MAPPINGS ---------- */
 .card {
-  background-color: #293241;
-  padding: 22px;
+  background-color: var(--card-bg);
+  padding: 25px;
   border-radius: 18px;
-  color: #e0e6ed;
-  margin: 20px auto;
+  color: var(--card-text);
+  margin: 25px auto;
   max-width: 1100px;
-  box-shadow: 0 12px 30px rgba(12, 28, 39, 0.12);
+  box-shadow: 0 12px 30px rgba(12, 28, 39, 0.15);
 }
 
-.section-intro {
-  margin: 8px 0 0;
-  color: #c6d2dc;
-}
-
-/* ---------- TILE LIST (3 ITEMS) ---------- */
+/* ---------- TIMELINE TILES GRID SYSTEM ---------- */
 ul.tile-list {
   list-style: none;
   padding: 0;
-  margin: 16px 0 8px;
-  display: flex;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  align-items: stretch;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 ul.tile-list > li.tile {
-  flex: 1 1 calc(33.333% - 13.333px);
-  box-sizing: border-box;
-  background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
-  padding: 14px;
+  background: var(--tile-bg);
+  color: var(--tile-text);
+  padding: 20px;
   border-radius: 14px;
-  min-width: 180px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
-  color: #1d1d1d;
-}
-
-#portfolio-module-projects .tile {
-  background: #f0f4f8;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100px;
+  flex-direction: column;
+  border-left: 5px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tile img.cert-img {
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+ul.tile-list > li.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
+
+/* Type Accents Implementation */
+li.tile.card-project { border-left-color: var(--color-project); }
+li.tile.card-achievement { border-left-color: var(--color-achievement); }
+li.tile.card-assessment { border-left-color: var(--color-assessment); }
+
+.tile-title-link {
+  color: var(--accent-blue);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.tile-title-link:hover { text-decoration: underline; }
 
 .tile-description {
-  margin: 10px 0 0;
+  margin: 12px 0;
   font-size: 0.95rem;
   line-height: 1.5;
-  color: inherit;
+  color: var(--tile-text);
+  opacity: 0.9;
 }
 
-.tile-badge {
+/* TAG GENERATION ARCHITECTURE */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.tile-tag-badge {
   display: inline-block;
-  margin-top: 10px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #d6eef7;
-  color: #11405a;
-  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
-.reflection-note {
-  margin-top: 18px;
-  padding: 16px 18px;
-  border-left: 4px solid #1aa6b7;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.reflection-note h3 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.reflection-note p {
-  margin: 0;
-  line-height: 1.6;
-}
-
-button.view-more {
-  margin-top: 12px;
-}
-
-.catalogue-list {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-}
-
-.catalogue-list > li.tile {
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #e8eef1;
-  border-radius: 8px;
-  color: #1d1d1d;
-}
-
-.add-form-card {
-  background: linear-gradient(180deg, #243244 0%, #1e2936 100%);
-}
-
+/* ---------- SYSTEM DATA CONTROL PANELS ---------- */
 .portfolio-form {
   display: grid;
   gap: 16px;
-  margin-top: 14px;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.portfolio-form label {
-  display: grid;
-  gap: 8px;
-  font-weight: 700;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .portfolio-form input,
@@ -204,99 +188,46 @@ button.view-more {
 .portfolio-form textarea {
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 12px;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.96);
-  color: #1d1d1d;
-  font: inherit;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+  color: #000000;
 }
 
-.portfolio-form textarea {
-  resize: vertical;
+.backup-utilities {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px dashed rgba(255,255,255,0.1);
 }
 
-.portfolio-form button {
-  justify-self: start;
+/* ---------- RESPONSIVE RESPONSIVENESS ---------- */
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+  body { padding: 10px; }
 }
 
-/* Catalogue button section */
-.catalogue-section {
-  margin: 2rem 0;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.catalogue-section p {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.catalogue-section .btn {
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 900px) {
-  ul.tile-list > li.tile {
-    flex: 1 1 calc(50% - 10px);
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 520px) {
-  ul.tile-list > li.tile {
-    flex: 1 1 100%;
-  }
-
+/* ---------- PRINT SPECIFICATION RESUME INTERFACE ---------- */
+@media print {
   body {
-    padding: 12px;
+    background: white !important;
+    color: black !important;
+    padding: 0;
   }
-
-  .hero,
   .card {
-    border-radius: 14px;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: black !important;
+    padding: 0;
+    margin: 10px 0;
   }
-}
-
-
-/* ---------- DARK MODE ---------- */
-body.dark {
-  background-color: #0d1117;
-  color: #d8e1e8;
-}
-
-body.dark .card {
-  background-color: #1b263b;
-  box-shadow: 0 2px 4px rgba(255,255,255,0.05);
-}
-
-body.dark .cert-img {
-  border: 2px solid #89c2d9;
-  box-shadow: 0 4px 8px rgba(0,153,255,0.25);
-}
-
-body.dark .hero {
-  background: linear-gradient(135deg, #144552, #0b525b);
-}
-
-body.dark .reflection-note {
-  background: rgba(255, 255, 255, 0.05);
-  border-left-color: #89c2d9;
-}
-
-body.dark footer {
-  background-color: #11212d;
-}
-
-body.dark .add-form {
-  background-color: #1f3a5f;
+  .hero, #portfolio-form, .backup-utilities, #theme-toggle {
+    display: none !important;
+  }
+  ul.tile-list > li.tile {
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    background: transparent !important;
+  }
 }

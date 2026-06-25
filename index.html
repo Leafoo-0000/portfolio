@@ -2,85 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Student Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Basil Ralph A. Birondo | Engineering Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  
   <header class="hero">
+    <img src="Image/profile_pic.png" alt="Basil Ralph A. Birondo Profile Picture" id="profile-img" />
     <h1 id="name">Basil Ralph A. Birondo</h1>
-    <img src="Image/profile_pic.png" alt="Profile" id="profile-img">
-    <p id="course-year">Computer Science - 2nd Year</p>
-    <button id="theme-toggle">Switch Theme</button>
+    <p id="course-year">Computer Science Student &mdash; 2nd Year</p>
+    <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
+      <a href="archive.html" class="btn">View Academic Timeline Archive</a>
+      <button id="theme-toggle" class="btn" style="background: rgba(255,255,255,0.15);">Switch Theme</button>
+    </div>
   </header>
 
   <main>
-    <section class="achievements card">
-      <h2>Certificates and Recognition</h2>
-      <p class="section-intro">A snapshot of certificates and recognition earned during the term.</p>
-      <ul class="tile-list" data-section="achievements" id="portfolio-achievements"></ul>
-      <div class="reflection-note">
-        <h3>CCIS Innovision 2026 Reflection</h3>
-        <p>If your group received an award, replace this note with the award title and a short reflection about what the experience taught you about teamwork, communication, or problem solving.</p>
+    <section class="card">
+      <h2>About Me & Technical Matrix</h2>
+      <p class="section-intro">
+        Passionate Computer Science student specializing in building structured software, robust desktop utilities, and responsive web platforms.
+      </p>
+      <div class="reflection-note" style="border-left-color: var(--accent-blue); margin-top: 15px;">
+        <h3>Core Technical Stack</h3>
+        <p style="font-family: monospace; font-size: 0.95rem; margin-top: 5px;">
+          Front-End: HTML5, CSS3, ES6+ JavaScript, React, Next.js <br>
+          Back-End & Systems: Java (Swing), C# (Windows Forms), Supabase, SQL
+        </p>
       </div>
     </section>
 
     <section id="projects" class="card">
-      <h2>Previous Projects</h2>
-      <p class="section-intro">Selected project work, shown as a curated set of highlights.</p>
-      <ul class="tile-list" data-section="projects" id="portfolio-projects"></ul>
+      <h2>Featured System Builds</h2>
+      <p class="section-intro">Selected core web builds, desktop architectures, and interactive system deployments.</p>
+      <ul class="tile-list" id="portfolio-projects"></ul>
     </section>
 
     <section class="card">
-      <h2>Module Assessments</h2>
-      <p class="section-intro">Course outputs and module-based activities.</p>
-      <ul class="tile-list" data-section="assessments" id="portfolio-assessments"></ul>
-    </section>
-
-    <section class="card">
-      <h2>Module Projects</h2>
-      <p class="section-intro">A few standout builds and demos.</p>
-      <ul class="tile-list module-projects" data-section="module-projects" id="portfolio-module-projects">
-      </ul>
-    </section>
-
-    <section class="card add-form-card">
-      <h2>Add Portfolio Item</h2>
-      <p class="section-intro">Use this form to add a new certificate, project, or assessment without editing the code.</p>
-      <form id="portfolio-form" class="portfolio-form">
-        <div class="form-grid">
-          <label>
-            Category
-            <select id="item-category" name="category" required>
-              <option value="achievements">Certificates and Recognition</option>
-              <option value="projects">Projects</option>
-              <option value="assessments">Assessments</option>
-            </select>
-          </label>
-          <label>
-            Title
-            <input id="item-title" name="title" type="text" placeholder="Enter a title" required />
-          </label>
-          <label>
-            Link
-            <input id="item-link" name="link" type="url" placeholder="https://example.com" />
-          </label>
-          <label>
-            Image path
-            <input id="item-image" name="image" type="text" placeholder="Image/your-file.png" />
-          </label>
-        </div>
-        <label>
-          Description or reflection
-          <textarea id="item-description" name="description" rows="4" placeholder="Add a short note about the item."></textarea>
-        </label>
-        <button type="submit">Add Item</button>
-      </form>
+      <h2>Featured Certifications & Recognition</h2>
+      <p class="section-intro">A snapshot of certified validations and institutional industry tokens earned.</p>
+      <ul class="tile-list" id="portfolio-achievements"></ul>
+      
+      <div class="reflection-note">
+        <h3>CCIS Innovision 2026 Reflection</h3>
+        <p>
+          Collaborating on project exhibitions during the college innovation events emphasizes the critical importance of modular class structures, clear interface contracts, and effective technical communication within rapid software teams.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2024 Basil Ralph A. Birondo. All rights reserved.</p>
+    <p>&copy; 2026 Basil Ralph A. Birondo. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
