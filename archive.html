@@ -6,14 +6,13 @@
   <title>Timeline Archive Explorer</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Archive Specific Layout Extensions */
     .archive-filters-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
     .archive-filters-bar input, .archive-filters-bar select { flex: 1; min-width: 150px; }
     .academic-year-block { margin-top: 35px; border-top: 2px dashed rgba(255,255,255,0.1); padding-top: 20px; }
     .term-grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 15px; }
     .term-bucket { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; }
     body.dark .term-bucket { background: rgba(0, 0, 0, 0.2); }
-    .term-bucket h4 { margin-top: 0; color: var(--accent-blue); display: flex; justify-content: space-between; align-items: center; }
+    .term-bucket h4 { margin-top: 0; color: var(--accent-blue); }
     .bucket-placeholder { font-size: 0.85rem; opacity: 0.6; font-style: italic; margin: 10px 0; }
   </style>
 </head>
@@ -32,8 +31,8 @@
     <section class="card">
       <h2>Timeline Filter Engine</h2>
       <div class="archive-filters-bar">
-        <input type="text" id="archive-search" placeholder="Search components by title, description, or tag properties..." class="portfolio-form" style="margin:0; padding:10px; font-size:0.95rem;" />
-        <select id="archive-category-filter" style="padding:10px; border-radius:8px; font-size:0.95rem;">
+        <input type="text" id="archive-search" placeholder="Search components by title, description, or tag properties..." style="margin:0; padding:10px; font-size:0.95rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:rgba(0,0,0,0.2); color:white;" />
+        <select id="archive-category-filter" style="padding:10px; border-radius:8px; font-size:0.95rem; background:rgba(0,0,0,0.2); color:white; border:1px solid rgba(255,255,255,0.1);">
           <option value="all">All Content Archetypes</option>
           <option value="project">Projects Only</option>
           <option value="achievement">Certificates Only</option>
@@ -45,15 +44,15 @@
         <h3>1st Academic Year</h3>
         <div class="term-grid-container">
           <div class="term-bucket" id="bucket-y1-t1">
-            <h4>Term 1 <button class="btn small" onclick="openQuickAdd(1,1)">+</button></h4>
+            <h4>Term 1</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y1-t2">
-            <h4>Term 2 <button class="btn small" onclick="openQuickAdd(1,2)">+</button></h4>
+            <h4>Term 2</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y1-t3">
-            <h4>Term 3 <button class="btn small" onclick="openQuickAdd(1,3)">+</button></h4>
+            <h4>Term 3</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
         </div>
@@ -63,15 +62,15 @@
         <h3>2nd Academic Year</h3>
         <div class="term-grid-container">
           <div class="term-bucket" id="bucket-y2-t1">
-            <h4>Term 1 <button class="btn small" onclick="openQuickAdd(2,1)">+</button></h4>
+            <h4>Term 1</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y2-t2">
-            <h4>Term 2 <button class="btn small" onclick="openQuickAdd(2,2)">+</button></h4>
+            <h4>Term 2</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y2-t3">
-            <h4>Term 3 <button class="btn small" onclick="openQuickAdd(2,3)">+</button></h4>
+            <h4>Term 3</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
         </div>
@@ -81,15 +80,15 @@
         <h3>3rd Academic Year</h3>
         <div class="term-grid-container">
           <div class="term-bucket" id="bucket-y3-t1">
-            <h4>Term 1 <button class="btn small" onclick="openQuickAdd(3,1)">+</button></h4>
+            <h4>Term 1</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y3-t2">
-            <h4>Term 2 <button class="btn small" onclick="openQuickAdd(3,2)">+</button></h4>
+            <h4>Term 2</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y3-t3">
-            <h4>Term 3 <button class="btn small" onclick="openQuickAdd(3,3)">+</button></h4>
+            <h4>Term 3</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
         </div>
@@ -99,89 +98,18 @@
         <h3>4th Academic Year</h3>
         <div class="term-grid-container">
           <div class="term-bucket" id="bucket-y4-t1">
-            <h4>Term 1 <button class="btn small" onclick="openQuickAdd(4,1)">+</button></h4>
+            <h4>Term 1</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y4-t2">
-            <h4>Term 2 <button class="btn small" onclick="openQuickAdd(4,2)">+</button></h4>
+            <h4>Term 2</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
           <div class="term-bucket" id="bucket-y4-t3">
-            <h4>Term 3 <button class="btn small" onclick="openQuickAdd(4,3)">+</button></h4>
+            <h4>Term 3</h4>
             <div class="bucket-placeholder">No elements mapped to this block.</div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="card add-form-card" id="management-form-section">
-      <h2>Commit New Portfolio Asset</h2>
-      <p class="section-intro">Construct and inject structured chronological metadata elements straight to browser state arrays.</p>
-      <form id="portfolio-form" class="portfolio-form">
-        <div class="form-grid">
-          <label>
-            Asset Archetype Category Type
-            <select id="item-type" name="type" required>
-              <option value="project">Project Work</option>
-              <option value="achievement">Certificate & Recognition</option>
-              <option value="assessment">Module Deliverable / Assessment</option>
-            </select>
-          </label>
-          <label>
-            Asset Title Entry
-            <input id="item-title" name="title" type="text" placeholder="e.g., Unsatoh Task Tracker" required />
-          </label>
-          <label>
-            Academic Target Year
-            <select id="item-year" name="year" required>
-              <option value="1">1st Year</option>
-              <option value="2" selected>2nd Year</option>
-              <option value="3">3rd Year</option>
-              <option value="4">4th Year</option>
-            </select>
-          </label>
-          <label>
-            Academic Sub-Term Sequence
-            <select id="item-term" name="term" required>
-              <option value="1">Term 1</option>
-              <option value="2">Term 2</option>
-              <option value="3">Term 3</option>
-            </select>
-          </label>
-          <label>
-            Live Target URL Path Links
-            <input id="item-link" name="link" type="url" placeholder="https://github.com/..." />
-          </label>
-          <label>
-            Asset Graphic Image Reference Path
-            <input id="item-image" name="image" type="text" placeholder="Image/screenshot.png" />
-          </label>
-          <label>
-            Metadata Scope Search Tags (Comma Separated)
-            <input id="item-tags" name="tags" type="text" placeholder="Java, Next.js, Swing, Supabase" />
-          </label>
-          <label style="display:flex; align-items:center; flex-direction:row; gap:10px; cursor:pointer;">
-            <input id="item-featured" name="featured" type="checkbox" style="width:auto; cursor:pointer;" />
-            Pin item to Homepage Featured Showcases
-          </label>
-        </div>
-        <label>
-          Asset Technical Overview / Execution Reflection Summary
-          <textarea id="item-description" name="description" rows="4" placeholder="Detail architectural patterns utilized, key features built, and problems solved..."></textarea>
-        </label>
-        <button type="submit">Commit Component to System</button>
-      </form>
-    </section>
-
-    <section class="card" style="background: rgba(0,0,0,0.15); border: 1px dashed var(--accent-blue);">
-      <div class="backup-utilities">
-        <h3>System Storage Migration Engine</h3>
-        <p>Backup or restore complete underlying local ledger arrays as a standardized JSON data blob snapshot configuration.</p>
-        <div style="margin-top:15px; display:flex; gap:12px; justify-content:center;">
-          <button id="export-btn" class="btn">Export Backup Package (JSON)</button>
-          <button id="import-btn" class="btn" style="background:linear-gradient(to right, #475569, #334155);">Import Backup Package (JSON)</button>
-        </div>
-        <input type="file" id="import-file-input" accept=".json" style="display: none;" />
       </div>
     </section>
   </main>
@@ -191,19 +119,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    // Utility injection helper to support quick addition via term buckets directly
-    function openQuickAdd(year, term) {
-      const yearField = document.getElementById('item-year');
-      const termField = document.getElementById('item-term');
-      const formSection = document.getElementById('management-form-section');
-      
-      if(yearField && termField) {
-        yearField.value = year;
-        termField.value = term;
-        formSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  </script>
 </body>
 </html>

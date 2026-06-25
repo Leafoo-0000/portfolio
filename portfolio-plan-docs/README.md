@@ -1,10 +1,10 @@
-# Portfolio Planning Docs
+# Portfolio Planning & Architecture Docs
 
-This folder contains the planning notes for the portfolio redesign.
+This folder contains the authoritative engineering blueprints and structural documentation for the single-source-of-truth portfolio system.
 
-Files:
-- 00-summary.md
-- 01-homepage.md
-- 02-archive.md
-- 03-data-model.md
-- 04-next-steps.md
+## Documentation Index
+- `00-summary.md` - Executive Overview & System Status
+- `01-homepage.md` - Presentation View & Landing Architecture
+- `02-archive.md` - Chronological Timeline Matrix & Administration Controls
+- `03-data-model.md` - Schema Properties, State Definitions, & Persistence Spec
+- `04-maintenance.md` - Deployment Workflow & Data Injection Runbook
