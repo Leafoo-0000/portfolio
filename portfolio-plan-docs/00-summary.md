@@ -1,10 +1,8 @@
-# Portfolio Redesign Summary
+# Portfolio Architecture Summary
 
-Refactor the portfolio into a cleaner, more maintainable single-source content model. Keep the current lightweight stack, but replace the mixed hardcoded/JS-driven flow with a consistent data layer, a proper showcase homepage, and a separate archive page grouped by year and term with the add form moved off the homepage.
+The portfolio configuration implements a pure client-side architecture. To avoid cross-origin data loss and sync conflicts between pages, all complex runtime local mutations and structural forms are completely omitted.
 
-## Goals
-- Make the homepage feel like a proper portfolio landing page.
-- Move organization and content entry to a separate archive page.
-- Group all items by year and term so the portfolio stays organized as it grows.
-- Keep a single data source in `script.js`.
-- Preserve browser persistence with `localStorage`.
+## System Footprint
+- **Single Source of Truth**: Data components reside natively inside a structured dataset array inside `script.js`.
+- **Zero-Bake Synchronization**: Modifying data objects in code updates both layouts instantly across all servers.
+- **Zero Configuration Scaling**: Eliminates storage configuration flags, input validation layers, and parsing errors.

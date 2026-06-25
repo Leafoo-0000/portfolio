@@ -1,10 +1,10 @@
-# Portfolio Planning & Architecture Docs
+# Portfolio Architecture Documentation
 
-This folder contains the authoritative engineering blueprints and structural documentation for the single-source-of-truth portfolio system.
+This folder tracks the structural blueprints and specifications for the hardcoded, single-source portfolio system.
 
-## Documentation Index
-- `00-summary.md` - Executive Overview & System Status
-- `01-homepage.md` - Presentation View & Landing Architecture
-- `02-archive.md` - Chronological Timeline Matrix & Administration Controls
-- `03-data-model.md` - Schema Properties, State Definitions, & Persistence Spec
-- `04-maintenance.md` - Deployment Workflow & Data Injection Runbook
+## Documents Index
+- `00-summary.md` - Core Architecture & System Status
+- `01-homepage.md` - Showcase Presentation Landing Specification
+- `02-archive.md` - 12-Bucket Chronological Timeline Archive Specification
+- `03-data-model.md` - Unified JavaScript Schema Structure
+- `04-maintenance.md` - Step-by-Step Asset Insertion Guide
