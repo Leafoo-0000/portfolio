@@ -1,9 +1,8 @@
 /* script.js
-   - Keeps portfolio showing only first 3 items per category
-   - Renders catalogue into 3 category lists:
-       #catalogue-achievements, #catalogue-projects, #catalogue-assessments
-   - Allows adding items at runtime via addAchievement / addProject / addAssessment
-   - Persists data to localStorage
+  - Single source of truth for portfolio content
+  - Renders the homepage and catalogue from the same data
+  - Persists edits in localStorage
+  - Supports a simple add-item form for new portfolio entries
 */
 
 /* ---------- theme toggle (keeps your existing) ---------- */
@@ -25,11 +24,36 @@ const LS_KEYS = {
 /* ---------- default data (used only when localStorage is empty) ---------- */
 const DEFAULTS = {
   achievements: [
-    { title: "Java Certificate", img: "Image/Java Cert.png", link: null },
-    { title: "Achievement 2", img: null, link: null },
-    { title: "Achievement 3", img: null, link: null },
-    { title: "Achievement 4", img: null, link: null },
-    { title: "Achievement 5", img: null, link: null }
+    {
+      title: "Java Certificate",
+      img: "Image/Java Cert.png",
+      link: null,
+      description: "Foundational Java training and hands-on practice."
+    },
+    {
+      title: "CCIS Innovision 2026 Certificate of Participation",
+      img: null,
+      link: null,
+      description: "Participation in the college-wide innovation event."
+    },
+    {
+      title: "Coursera Certificates",
+      img: null,
+      link: null,
+      description: "Online learning certificates earned during the term."
+    },
+    {
+      title: "Other relevant certificates earned during the term",
+      img: null,
+      link: null,
+      description: "Additional learning achievements and short-term credentials."
+    },
+    {
+      title: "CCIS Innovision 2026 Award",
+      img: null,
+      link: null,
+      description: "If your group received an award, replace this with the exact award name and a short reflection on what the experience taught you about teamwork, communication, or problem solving."
+    }
   ],
   projects: [
     { title: "Easy-E (Event Management System)", link: "https://github.com/Leafoo-0000/Easy-E", img: null },
@@ -50,30 +74,48 @@ let achievements = [];
 let projects = [];
 let assessments = [];
 
+function getStore() {
+  globalThis._portfolioStore = globalThis._portfolioStore || {};
+  return globalThis._portfolioStore;
+}
+
+function canUseLocalStorage() {
+  return typeof localStorage !== 'undefined';
+}
+
 /* ---------- helpers: save / load ---------- */
 function saveCategory(key, arr) {
-    try {
-    const store = {};
-    store[key] = arr;
-    // Store in memory instead of localStorage
-    window._portfolioStore = window._portfolioStore || {};
-    window._portfolioStore[key] = arr;
-    } catch (e) {
-    console.warn('Failed to save:', e);
+  try {
+    const serialized = JSON.stringify(arr);
+    if (canUseLocalStorage()) {
+      localStorage.setItem(key, serialized);
     }
+    getStore()[key] = arr;
+  } catch (error) {
+    console.warn('Failed to save:', error);
+  }
 }
 
 function loadCategory(key, fallback) {
-    try {
-    if (!window._portfolioStore) window._portfolioStore = {};
-    const data = window._portfolioStore[key];
-    if (!data) return fallback.slice();
+  try {
+    if (canUseLocalStorage()) {
+      const storedValue = localStorage.getItem(key);
+      if (storedValue) {
+        const parsedValue = JSON.parse(storedValue);
+        if (Array.isArray(parsedValue)) {
+          return parsedValue;
+        }
+      }
+    }
+
+    const store = getStore();
+    const data = store[key];
     if (!Array.isArray(data)) return fallback.slice();
     return data;
-    } catch (e) {
-    console.warn('Failed to read:', e);
+  } catch (error) {
+    console.warn('Failed to read:', error);
     return fallback.slice();
-    }
+  }
 }
 
 function persistAll() {
@@ -90,34 +132,38 @@ function loadAll() {
 
 /* ---------- rendering helpers ---------- */
 function renderTile(item) {
-  // item: { title, link?, img? }
-  const safeTitle = (item.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const safeTitle = String(item.title || '').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  const safeDescription = String(item.description || '').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 
-  // If there's an image, show it above the title. If there's a link, wrap the title (and image) in <a>.
   let inner = '';
   if (item.img) {
     inner += `<img src="${item.img}" class="cert-img" alt="${safeTitle}">`;
   }
 
-  // title with or without link
   if (item.link) {
     inner += `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${safeTitle}</a>`;
   } else {
     inner += `<h3>${safeTitle}</h3>`;
   }
 
+  if (safeDescription) {
+    inner += `<p class="tile-description">${safeDescription}</p>`;
+  }
+
+  if (item.category) {
+    inner += `<span class="tile-badge">${item.category}</span>`;
+  }
+
   return `<li class="tile">${inner}</li>`;
 }
 
-/* Show first 3 items in portfolio for given array */
-function renderPortfolioList(array, elementId) {
+function renderPortfolioList(array, elementId, limit = 3) {
   const el = document.getElementById(elementId);
   if (!el) return;
-  const firstThree = array.slice(0, 3);
-  el.innerHTML = firstThree.map(item => renderTile(item)).join('');
+  const visibleItems = array.slice(0, limit);
+  el.innerHTML = visibleItems.map(item => renderTile(item)).join('');
 }
 
-/* For catalogue: show everything AFTER the first 3 for that category */
 function renderCatalogueCategory(array, elementId) {
   const el = document.getElementById(elementId);
   if (!el) return;
@@ -129,113 +175,108 @@ function renderCatalogueCategory(array, elementId) {
   el.innerHTML = extras.map(item => renderTile(item)).join('');
 }
 
-/* top-level render that updates both portfolio and catalogue depending on presence of elements */
 function renderAll() {
-  // Portfolio lists (IDs expected to exist in index.html)
-  renderPortfolioList(achievements, 'portfolio-achievements');
+  renderPortfolioList(achievements, 'portfolio-achievements', 4);
   renderPortfolioList(projects, 'portfolio-projects');
   renderPortfolioList(assessments, 'portfolio-assessments');
-
-  // Catalogue categories (IDs expected to exist in catalogue.html)
   renderCatalogueCategory(achievements, 'catalogue-achievements');
   renderCatalogueCategory(projects, 'catalogue-projects');
   renderCatalogueCategory(assessments, 'catalogue-assessments');
 }
 
-/* ---------- public API: add items at runtime ----------
-   Usage (two options):
-     addAchievement({ title: 'New', link: '...', img: '...' });
-   OR
-     addAchievement('New Title', 'https://...', 'Image/x.png');
-   Each function saves to localStorage and re-renders pages.
-*/
-function normalizeNewItem(argOrTitle, link, img) {
-  if (argOrTitle && typeof argOrTitle === 'object') {
-    // assume object {title, link?, img?}
-    return {
-      title: String(argOrTitle.title || '').trim(),
-      link: argOrTitle.link || null,
-      img: argOrTitle.img || null
-    };
-  } else {
-    return {
-      title: String(argOrTitle || '').trim(),
-      link: link || null,
-      img: img || null
-    };
-  }
+function normalizeItem(payload) {
+  const category = String(payload.category || 'achievements').trim();
+  const title = String(payload.title || '').trim();
+  const link = String(payload.link || '').trim();
+  const img = String(payload.img || '').trim();
+  const description = String(payload.description || '').trim();
+
+  return {
+    category,
+    title,
+    link: link || null,
+    img: img || null,
+    description: description || null
+  };
 }
 
-function addAchievement(argOrTitle, link = null, img = null) {
-  const item = normalizeNewItem(argOrTitle, link, img);
-  if (!item.title) return; // ignore empty
-  achievements.push(item);
-  persistAll();
-  renderAll();
-}
-function addProject(argOrTitle, link = null, img = null) {
-  const item = normalizeNewItem(argOrTitle, link, img);
-  if (!item.title) return;
-  projects.push(item);
-  persistAll();
-  renderAll();
-}
-function addAssessment(argOrTitle, link = null, img = null) {
-  const item = normalizeNewItem(argOrTitle, link, img);
-  if (!item.title) return;
-  assessments.push(item);
-  persistAll();
-  renderAll();
+function getCategoryList(category) {
+  if (category === 'projects') return projects;
+  if (category === 'assessments') return assessments;
+  return achievements;
 }
 
-/* ---------- UI event for add button ---------- */
-function initAddAssessmentButton() {
-  const addBtn = document.getElementById('add-assessment-btn');
-  if (!addBtn) return; // button doesn't exist on this page
-  
-  addBtn.addEventListener('click', () => {
-    const titleInput = document.getElementById('assessment-title');
-    const linkInput = document.getElementById('assessment-link');
-    
-    const title = titleInput.value.trim();
-    const link = linkInput.value.trim();
+function addPortfolioItem(payload) {
+  const item = normalizeItem(payload);
+  if (!item.title) return false;
+  const category = item.category === 'projects' || item.category === 'assessments' ? item.category : 'achievements';
+  const list = getCategoryList(category);
+  list.push(item);
+  persistAll();
+  renderAll();
+  return true;
+}
 
-    if (!title) {
-      alert('Please enter a title for the assessment.');
+function addAchievement(title, link = null, img = null, description = null) {
+  return addPortfolioItem({ category: 'achievements', title, link, img, description });
+}
+
+function addProject(title, link = null, img = null, description = null) {
+  return addPortfolioItem({ category: 'projects', title, link, img, description });
+}
+
+function addAssessment(title, link = null, img = null, description = null) {
+  return addPortfolioItem({ category: 'assessments', title, link, img, description });
+}
+
+function initPortfolioForm() {
+  const form = document.getElementById('portfolio-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const category = document.getElementById('item-category')?.value || 'achievements';
+    const title = document.getElementById('item-title')?.value || '';
+    const link = document.getElementById('item-link')?.value || '';
+    const image = document.getElementById('item-image')?.value || '';
+    const description = document.getElementById('item-description')?.value || '';
+
+    const added = addPortfolioItem({
+      category,
+      title,
+      link,
+      img: image,
+      description
+    });
+
+    if (!added) {
+      alert('Please enter a title for the new portfolio item.');
       return;
     }
 
-    addAssessment(title, link || null);
-    
-    // Clear inputs
-    titleInput.value = '';
-    linkInput.value = '';
-    
-    alert('Assessment added successfully!');
+    form.reset();
+    alert('Portfolio item added successfully.');
   });
 }
 
-/* Optional: remove an item by category + index (index is full-array index, not catalogue index) */
 function removeItem(category, index) {
-  if (!['achievements','projects','assessments'].includes(category)) return;
-  let arr = (category === 'achievements') ? achievements : (category === 'projects' ? projects : assessments);
-  if (index < 0 || index >= arr.length) return;
-  arr.splice(index, 1);
+  const list = getCategoryList(category);
+  if (index < 0 || index >= list.length) return;
+  list.splice(index, 1);
   persistAll();
   renderAll();
 }
 
-/* ---------- initialize ---------- */
 loadAll();
 document.addEventListener('DOMContentLoaded', () => {
   renderAll();
-  initAddAssessmentButton(); // Add this line
+  initPortfolioForm();
 });
 
-
-/* expose API to window so you can call it from the console or add small UI */
-window.addAchievement = addAchievement;
-window.addProject = addProject;
-window.addAssessment = addAssessment;
-window.removeItem = removeItem;
-window._portfolioData = { loadAll, persistAll }; // debug helpers
+globalThis.addAchievement = addAchievement;
+globalThis.addProject = addProject;
+globalThis.addAssessment = addAssessment;
+globalThis.addPortfolioItem = addPortfolioItem;
+globalThis.removeItem = removeItem;
+globalThis._portfolioData = { loadAll, persistAll }; // debug helpers

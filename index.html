@@ -16,51 +16,67 @@
 
   <main>
     <section class="achievements card">
-      <h2>Achievements / Certifications</h2>
-      <ul class="tile-list" data-section="achievements" id="portfolio-achievements">
-        <li class="tile">
-          <h3>Java Certificate</h3>
-          <img src="Image/Java Cert.png" alt="Java Certificate" class="cert-img">
-        </li>
-        <li class="tile">Achievement 2</li>
-        <li class="tile">Achievement 3</li>
-      </ul>
+      <h2>Certificates and Recognition</h2>
+      <p class="section-intro">A snapshot of certificates and recognition earned during the term.</p>
+      <ul class="tile-list" data-section="achievements" id="portfolio-achievements"></ul>
+      <div class="reflection-note">
+        <h3>CCIS Innovision 2026 Reflection</h3>
+        <p>If your group received an award, replace this note with the award title and a short reflection about what the experience taught you about teamwork, communication, or problem solving.</p>
+      </div>
     </section>
 
     <section id="projects" class="card">
       <h2>Previous Projects</h2>
-      <ul class="tile-list" data-section="projects" id="portfolio-projects">
-        <li class="tile">
-          <strong>Easy-E (Event Management System)</strong><br>
-          <a href="https://github.com/Leafoo-0000/Easy-E" target="_blank">View on GitHub</a>
-        </li>
-        <li class="tile">Project 2</li>
-        <li class="tile">Project 3</li>
-      
-      </ul>
+      <p class="section-intro">Selected project work, shown as a curated set of highlights.</p>
+      <ul class="tile-list" data-section="projects" id="portfolio-projects"></ul>
     </section>
 
     <section class="card">
       <h2>Module Assessments</h2>
-      <ul class="tile-list" data-section="assessments" id="portfolio-assessments">
-        <li class="tile"><a href="https://leafoo-0000.github.io/GreenSense/LandingPage.html" target="_blank">IT103 Case Study M1 F2 GreenSense Landing Page</a></li>
-        <li class="tile"><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html" target="_blank">MP1: ReplaceAll</a></li>
-        <li class="tile"><a href="https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html" target="_blank">MP2: SearchWord</a></li>
-      </ul>
+      <p class="section-intro">Course outputs and module-based activities.</p>
+      <ul class="tile-list" data-section="assessments" id="portfolio-assessments"></ul>
     </section>
 
     <section class="card">
       <h2>Module Projects</h2>
+      <p class="section-intro">A few standout builds and demos.</p>
       <ul class="tile-list module-projects" data-section="module-projects" id="portfolio-module-projects">
-        <li class="tile"><a href="https://m1summativeexampart3birondo.vercel.app/">M1 Summative Exam - Part 3</a></li>
-         <li class="tile"><a href="https://Just-Do-It.vercel.app/">Just-Do-It Web App</a></li>
       </ul>
     </section>
-    
-    <!-- <div class="catalogue-section">
-      <input type="button" id="catalogue" class="btn" value="Go to Catalogue" onclick="location.href='catalogue.html'"> 
-      <p id="check-catalogue">Check out the catalogue to see all items</p>
-   </div> -->
+
+    <section class="card add-form-card">
+      <h2>Add Portfolio Item</h2>
+      <p class="section-intro">Use this form to add a new certificate, project, or assessment without editing the code.</p>
+      <form id="portfolio-form" class="portfolio-form">
+        <div class="form-grid">
+          <label>
+            Category
+            <select id="item-category" name="category" required>
+              <option value="achievements">Certificates and Recognition</option>
+              <option value="projects">Projects</option>
+              <option value="assessments">Assessments</option>
+            </select>
+          </label>
+          <label>
+            Title
+            <input id="item-title" name="title" type="text" placeholder="Enter a title" required />
+          </label>
+          <label>
+            Link
+            <input id="item-link" name="link" type="url" placeholder="https://example.com" />
+          </label>
+          <label>
+            Image path
+            <input id="item-image" name="image" type="text" placeholder="Image/your-file.png" />
+          </label>
+        </div>
+        <label>
+          Description or reflection
+          <textarea id="item-description" name="description" rows="4" placeholder="Add a short note about the item."></textarea>
+        </label>
+        <button type="submit">Add Item</button>
+      </form>
+    </section>
   </main>
 
   <footer>

@@ -1,7 +1,7 @@
 /* ---------- GLOBAL BASE ---------- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #a2e1f8; /* soft light gray */
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #b7e9ff 0%, #a2e1f8 42%, #d8f0fb 100%);
   color: #1d1d1d;
   margin: 0;
   padding: 20px;
@@ -13,10 +13,20 @@ header {
 }
 
 .hero {
-  background: linear-gradient(135deg, #3ba2d7, #2274a5);
-  padding: 20px;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #1c5f86, #11405a);
+  padding: 28px 20px;
+  border-radius: 18px;
   color: white;
+  box-shadow: 0 12px 30px rgba(17, 64, 90, 0.24);
+}
+
+.hero p {
+  margin: 0.5rem 0 0;
+}
+
+#name {
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
 }
 
 /* Profile image */
@@ -29,19 +39,19 @@ header {
 footer {
   text-align: center;
   padding: 1rem;
-  background-color: #1e3d58;
+  background-color: #18354a;
   color: white;
   font-size: 1em;
-  border-radius: 6px;
+  border-radius: 12px;
+  margin-top: 24px;
 }
 
 /* ---------- BUTTONS ---------- */
 button, .btn {
   padding: 10px 20px;
   cursor: pointer;
-  background-image: linear-gradient(to right, #1aa6b7, #3d7ea6);
+  background-image: linear-gradient(to right, #1aa6b7, #2f8fb1);
   color: white;
-  border: none;
   border-radius: 6px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
   border: 2px solid rgba(255,255,255,0.2);
@@ -56,12 +66,18 @@ button, .btn {
 
 /* ---------- CARD SECTIONS ---------- */
 .card {
-  background-color: #293241; /* rich slate blue */
-  padding: 20px;
-  border-radius: 12px;
+  background-color: #293241;
+  padding: 22px;
+  border-radius: 18px;
   color: #e0e6ed;
   margin: 20px auto;
   max-width: 1100px;
+  box-shadow: 0 12px 30px rgba(12, 28, 39, 0.12);
+}
+
+.section-intro {
+  margin: 8px 0 0;
+  color: #c6d2dc;
 }
 
 /* ---------- TILE LIST (3 ITEMS) ---------- */
@@ -79,9 +95,9 @@ ul.tile-list {
 ul.tile-list > li.tile {
   flex: 1 1 calc(33.333% - 13.333px);
   box-sizing: border-box;
-  background: #ffffff;
-  padding: 12px;
-  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
+  padding: 14px;
+  border-radius: 14px;
   min-width: 180px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.12);
   color: #1d1d1d;
@@ -90,8 +106,8 @@ ul.tile-list > li.tile {
 #portfolio-module-projects .tile {
   background: #f0f4f8;
   display: flex;
-  justify-content: center; /* Horizontal center */
-  align-items: center;     /* Vertical center */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   height: 100px;
 }
@@ -105,13 +121,46 @@ ul.tile-list > li.tile {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-button.view-more {
-  margin-top: 12px;
+.tile-description {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: inherit;
 }
 
-/* ---------- CATALOGUE PAGE ---------- */
-.catalogue-section { 
-  margin-bottom: 30px; 
+.tile-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #d6eef7;
+  color: #11405a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.reflection-note {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-left: 4px solid #1aa6b7;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.reflection-note h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.reflection-note p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+button.view-more {
+  margin-top: 12px;
 }
 
 .catalogue-list {
@@ -126,6 +175,49 @@ button.view-more {
   background: #e8eef1;
   border-radius: 8px;
   color: #1d1d1d;
+}
+
+.add-form-card {
+  background: linear-gradient(180deg, #243244 0%, #1e2936 100%);
+}
+
+.portfolio-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.portfolio-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.portfolio-form input,
+.portfolio-form select,
+.portfolio-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1d1d1d;
+  font: inherit;
+}
+
+.portfolio-form textarea {
+  resize: vertical;
+}
+
+.portfolio-form button {
+  justify-self: start;
 }
 
 /* Catalogue button section */
@@ -155,10 +247,23 @@ button.view-more {
   ul.tile-list > li.tile {
     flex: 1 1 calc(50% - 10px);
   }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 520px) {
   ul.tile-list > li.tile {
     flex: 1 1 100%;
+  }
+
+  body {
+    padding: 12px;
+  }
+
+  .hero,
+  .card {
+    border-radius: 14px;
   }
 }
 
@@ -181,6 +286,11 @@ body.dark .cert-img {
 
 body.dark .hero {
   background: linear-gradient(135deg, #144552, #0b525b);
+}
+
+body.dark .reflection-note {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: #89c2d9;
 }
 
 body.dark footer {
