@@ -245,3 +245,8 @@ li.tile.card-assessment { border-left-color: var(--color-assessment); }
     background: transparent !important;
   }
 }
+
+/* ---------- Helper ---------- */
+.hidden {
+    display: none !important;
+}

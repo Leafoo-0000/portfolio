@@ -58,7 +58,7 @@ const PORTFOLIO_DATA = {
       title: "AtiCao: Davao IoT Cacao Disease Risk Monitor",
       category: "project",
       year: 2,
-      term: 2,
+      term: 3,
       link: "https://github.com/Yami2Danchou/aticao-project",
       image: null, 
       description: "An IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
@@ -246,7 +246,8 @@ function setupArchiveFilters() {
       const matchesCategory = (activeCategory === "all" || typeLabel === activeCategory);
 
       if (matchesSearch && matchesCategory) {
-        card.style.display = "flex"; // Restores structural alignment layout rules
+        // FIXED: Reverts style to standard layout rules defined in style.css
+        card.style.display = ""; 
       } else {
         card.style.display = "none";
       }
