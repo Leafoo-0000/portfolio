@@ -60,6 +60,7 @@ const PORTFOLIO_DATA = {
       year: 2,
       term: 3,
       link: "https://github.com/Yami2Danchou/aticao-project",
+      manuscript: "https://drive.google.com/file/d/1hCN5DtYwdMJ2EJ8eVdE4vx3ZJGm_SOM5/view?usp=sharing",
       image: "Image/Projects/AtiCao.jpg", 
       description: "An App/IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
       featured: true,
@@ -206,6 +207,15 @@ function createCardHTML(item) {
   const imageMarkup = item.image ? `<img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:6px; margin-bottom:10px; object-fit:cover;" />` : '';
   const titleMarkup = item.link ? `<a href="${item.link}" target="_blank" class="tile-title-link">${item.title}</a>` : item.title;
   
+  // New check: Generate a stylized button link if a manuscript PDF exists
+  const manuscriptMarkup = item.manuscript ? `
+    <div style="margin-top: 8px;">
+      <a href="${item.manuscript}" target="_blank" class="btn" style="padding: 4px 10px; font-size: 0.8rem; display: inline-flex; align-items: center; background: rgba(0, 122, 255, 0.15); color: var(--accent-blue); text-decoration: none; border-radius: 4px;">
+        📄 View Manuscript (PDF)
+      </a>
+    </div>
+  ` : '';
+  
   // Directly bind color variables mapped from your root tokens
   const typeColor = `var(--color-${item.category})`;
   const tagBadges = item.tags.map(t => `<span class="tile-tag-badge">${t}</span>`).join('');
@@ -219,7 +229,8 @@ function createCardHTML(item) {
       </div>
       <h5 style="margin:4px 0; font-size:1.1rem; font-weight:600;">${titleMarkup}</h5>
       <p class="tile-description">${item.description}</p>
-      <div class="tag-container">${tagBadges}</div>
+      ${manuscriptMarkup} 
+      <div class="tag-container" style="margin-top:10px;">${tagBadges}</div>
     </li>
   `;
 }
