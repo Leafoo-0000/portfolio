@@ -1,62 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Basil Ralph A. Birondo | Engineering Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-   
-  <header class="hero">
-    <img src="Image/profile_pic.png" alt="Basil Ralph A. Birondo Profile Picture" id="profile-img" />
-    <h1 id="name">Basil Ralph A. Birondo</h1>
-    <p id="course-year">Computer Science Student &mdash; 2nd Year</p>
-    <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
-      <a href="archive.html" class="btn">View Academic Timeline Archive</a>
-      <button id="theme-toggle" class="btn" style="background: rgba(255,255,255,0.15);">Switch Theme</button>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Basil Ralph A. Birondo | Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="profile-card">
+      <img
+        src="Image/profile_pic.png"
+        class="profile-avatar"
+        alt="Basil Ralph A. Birondo"
+      />
 
-  <main>
-    <section class="card">
-      <h2>About Me & Technical Matrix</h2>
-      <p class="section-intro">
-        Passionate Computer Science student specializing in building structured software, robust desktop utilities, and responsive web platforms.
-      </p>
-      <div class="reflection-note" style="border-left-color: var(--accent-blue); margin-top: 15px;">
-        <h3>Core Technical Stack</h3>
-        <p style="font-family: monospace; font-size: 0.95rem; margin-top: 5px;">
-          Front-End: HTML5, CSS3, ES6+ JavaScript, React, Next.js <br>
-          Back-End & Systems: Java (Swing), C# (Windows Forms), Supabase, SQL
-        </p>
+      <div class="profile-details">
+        <h1 class="profile-name">Basil Ralph A. Birondo</h1>
+        <p class="profile-subtitle">Computer Science Student — 2nd Year</p>
+
+        <div class="profile-actions">
+          <a href="archive.html" class="btn btn-primary"
+            >View Academic Timeline Archive</a
+          >
+          <button id="theme-toggle" class="btn btn-secondary">
+            Switch Theme
+          </button>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <section id="projects" class="card">
-      <h2>Featured System Builds</h2>
-      <p class="section-intro">Selected core web builds, desktop architectures, and interactive system deployments.</p>
-      <ul class="tile-list" id="portfolio-projects"></ul>
-    </section>
-
-    <section class="card">
-      <h2>Featured Certifications & Recognition</h2>
-      <p class="section-intro">A snapshot of certified validations and institutional industry tokens earned.</p>
-      <ul class="tile-list" id="portfolio-achievements"></ul>
-      
-      <div class="reflection-note">
-        <h3>CCIS Innovision 2026 Reflection</h3>
-        <p>
-          Collaborating on project exhibitions during the college innovation events emphasizes the critical importance of modular class structures, clear interface contracts, and effective technical communication within rapid software teams.
+    <main>
+      <section class="card">
+        <h2>About Me & Technical Matrix</h2>
+        <p class="section-intro">
+          Passionate Computer Science student specializing in building
+          structured software, robust desktop utilities, and responsive web
+          platforms.
         </p>
-      </div>
-    </section>
-  </main>
+        <div
+          class="reflection-note"
+          style="border-left-color: var(--accent-blue); margin-top: 15px"
+        >
+          <h3>Core Technical Stack</h3>
+          <p
+            style="font-family: monospace; font-size: 0.95rem; margin-top: 5px"
+          >
+            Front-End: HTML5, CSS3, ES6+ JavaScript, React, Next.js <br />
+            Back-End & Systems: Java (Swing), C# (Windows Forms), Supabase, SQL
+          </p>
+        </div>
+      </section>
 
-  <footer>
-    <p>&copy; 2026 Basil Ralph A. Birondo. All rights reserved.</p>
-  </footer>
+      <section id="projects" class="card">
+        <h2>Featured System Builds</h2>
+        <p class="section-intro">
+          Selected core web builds, desktop architectures, and interactive
+          system deployments.
+        </p>
+        <ul class="tile-list" id="portfolio-projects"></ul>
+      </section>
 
-  <script src="script.js"></script>
-</body>
+      <section class="card">
+        <h2>Featured Certifications & Recognition</h2>
+        <p class="section-intro">
+          A snapshot of certified validations and institutional industry tokens
+          earned.
+        </p>
+        <ul class="tile-list" id="portfolio-achievements"></ul>
+
+        <div class="reflection-note"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Basil Ralph A. Birondo. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

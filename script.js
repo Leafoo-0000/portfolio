@@ -23,7 +23,7 @@ const PORTFOLIO_DATA = {
       term: 3,
       link: null,
       image: "Image/Certificates/Certificate.png",
-      description: "Project presentation and technical showcase deployment validation.",
+      description: "Reflection: Collaborating on project exhibitions during the college innovation events emphasizes the critical importance of modular class structures, clear interface contracts, and effective technical communication within rapid software teams.",
       featured: true,
       tags: ["Presentation", "Showcase"]
     }
@@ -207,7 +207,6 @@ function createCardHTML(item) {
   const imageMarkup = item.image ? `<img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:6px; margin-bottom:10px; object-fit:cover;" />` : '';
   const titleMarkup = item.link ? `<a href="${item.link}" target="_blank" class="tile-title-link">${item.title}</a>` : item.title;
   
-  // New check: Generate a stylized button link if a manuscript PDF exists
   const manuscriptMarkup = item.manuscript ? `
     <div style="margin-top: 8px;">
       <a href="${item.manuscript}" target="_blank" class="btn" style="padding: 4px 10px; font-size: 0.8rem; display: inline-flex; align-items: center; background: rgba(0, 122, 255, 0.15); color: var(--accent-blue); text-decoration: none; border-radius: 4px;">
@@ -216,7 +215,6 @@ function createCardHTML(item) {
     </div>
   ` : '';
   
-  // Directly bind color variables mapped from your root tokens
   const typeColor = `var(--color-${item.category})`;
   const tagBadges = item.tags.map(t => `<span class="tile-tag-badge">${t}</span>`).join('');
 
@@ -257,7 +255,6 @@ function setupArchiveFilters() {
       const matchesCategory = (activeCategory === "all" || typeLabel === activeCategory);
 
       if (matchesSearch && matchesCategory) {
-        // FIXED: Reverts style to standard layout rules defined in style.css
         card.style.display = ""; 
       } else {
         card.style.display = "none";
@@ -270,12 +267,23 @@ function setupArchiveFilters() {
 }
 
 // =========================================================================
-// 7. GLOBAL THEME MANAGER LAYER
+// 7. GLOBAL THEME MANAGER LAYER (With file:// Fail-safes)
 // =========================================================================
 function initGlobalTheme() {
   const themeToggleBtn = document.getElementById("theme-toggle");
-  
-  if (localStorage.getItem("portfolio_theme_state") === "light") {
+  let savedTheme = "dark"; // Default fallback structure
+
+  // Defensive block prevents file:// environments from crashing engine execution
+  try {
+    const activeState = localStorage.getItem("portfolio_theme_state");
+    if (activeState) {
+      savedTheme = activeState;
+    }
+  } catch (securityException) {
+    console.warn("Storage engine restricted locally. Running application in fallback runtime mode.");
+  }
+
+  if (savedTheme === "light") {
     document.body.classList.remove("dark");
   } else {
     document.body.classList.add("dark");
@@ -285,7 +293,11 @@ function initGlobalTheme() {
     themeToggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
       const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
-      localStorage.setItem("portfolio_theme_state", currentTheme);
+      try {
+        localStorage.setItem("portfolio_theme_state", currentTheme);
+      } catch (saveException) {
+        // Silently capture local write limitations
+      }
     });
   }
 }
