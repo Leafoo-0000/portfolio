@@ -5,7 +5,7 @@ const PORTFOLIO_DATA = {
   achievements: [
     {
       id: "cert-java-core",
-      title: "Advanced Java Programming Certification",
+      title: "Java Programming Certification",
       category: "achievement",
       year: 2,
       term: 1,
@@ -30,7 +30,7 @@ const PORTFOLIO_DATA = {
   ],
   projects: [
     {
-      id: "Easy-E",
+      id: "proj-Easy-E",
       title: "Easy-E (Event Management System)",
       category: "project",
       year: 1,
@@ -42,7 +42,7 @@ const PORTFOLIO_DATA = {
       tags: ["Java", "Swing", "SQL"]
     },
     {
-      id: "Just-Do-It",
+      id: "proj-Just-Do-It",
       title: "Just-Do-It Web App",
       category: "project",
       year: 2,
@@ -54,7 +54,7 @@ const PORTFOLIO_DATA = {
       tags: ["Next.js", "React", "Supabase"]
     },
     {
-      id: "AtiCao",
+      id: "proj-AtiCao",
       title: "AtiCao: Davao IoT Cacao Disease Risk Monitor",
       category: "project",
       year: 2,
