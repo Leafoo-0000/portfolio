@@ -60,8 +60,8 @@ const PORTFOLIO_DATA = {
       year: 2,
       term: 3,
       link: "https://github.com/Yami2Danchou/aticao-project",
-      image: null, 
-      description: "An IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
+      image: "Image/Projects/AtiCao.jpg", 
+      description: "An App/IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
       featured: true,
       tags: ["Java", "Mobile App", "Machine Learning", "IoT"]
     }
