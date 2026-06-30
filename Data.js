@@ -38,7 +38,7 @@ const PORTFOLIO_DATA = {
       link: null,
       image: "Image/Certificates/AtiCao Award.jpeg",
       description:
-        "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
+        "Validation of App development & Emerging Technologies, Human-Computer Interaction, Architecture and Organization, Introduction to Data Science concepts, and the application of Machine Learning and IoT in real-world scenarios.",
       featured: true,
       tags: ["Presentation", "Showcase", "Award"],
     },
