@@ -11,9 +11,10 @@ const PORTFOLIO_DATA = {
       term: 1,
       link: null,
       image: "Image/Certificates/Java Cert.png",
-      description: "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
+      description:
+        "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
       featured: true,
-      tags: ["Java", "Swing", "OOP"]
+      tags: ["Java", "Swing", "OOP"],
     },
     {
       id: "cert-innovision2028",
@@ -23,9 +24,10 @@ const PORTFOLIO_DATA = {
       term: 3,
       link: null,
       image: "Image/Certificates/Certificate.png",
-      description: "Reflection: Collaborating on project exhibitions during the college innovation events emphasizes the critical importance of modular class structures, clear interface contracts, and effective technical communication within rapid software teams.",
+      description:
+        "Reflection: Collaborating on project exhibitions during the college innovation events emphasizes the critical importance of modular class structures, clear interface contracts, and effective technical communication within rapid software teams.",
       featured: true,
-      tags: ["Presentation", "Showcase"]
+      tags: ["Presentation", "Showcase"],
     },
     {
       id: "cert-AtiCao-Award",
@@ -35,10 +37,11 @@ const PORTFOLIO_DATA = {
       term: 3,
       link: null,
       image: "Image/Certificates/AtiCao Award.jpeg",
-      description: "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
+      description:
+        "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
       featured: true,
-      tags: ["Presentation", "Showcase", "Award"]
-    }
+      tags: ["Presentation", "Showcase", "Award"],
+    },
   ],
   projects: [
     {
@@ -48,10 +51,11 @@ const PORTFOLIO_DATA = {
       year: 1,
       term: 3,
       link: "https://github.com/Leafoo-0000/Easy-E/",
-      image: null, 
-      description: "A comprehensive event platform designed to streamline room bookings, scheduling matrix constraints, and student-led college activities.",
+      image: null,
+      description:
+        "A comprehensive event platform designed to streamline room bookings, scheduling matrix constraints, and student-led college activities.",
       featured: true,
-      tags: ["Java", "Swing", "SQL"]
+      tags: ["Java", "Swing", "SQL"],
     },
     {
       id: "proj-Just-Do-It",
@@ -60,10 +64,11 @@ const PORTFOLIO_DATA = {
       year: 2,
       term: 2,
       link: "https://Just-Do-It.vercel.app/",
-      image: null, 
-      description: "A sustainability habit tracker application utilizing milestone counters to reinforce eco-friendly routines and personal tracking metrics.",
+      image: null,
+      description:
+        "A sustainability habit tracker application utilizing milestone counters to reinforce eco-friendly routines and personal tracking metrics.",
       featured: true,
-      tags: ["Next.js", "React", "Supabase"]
+      tags: ["Next.js", "React", "Supabase"],
     },
     {
       id: "proj-AtiCao",
@@ -72,12 +77,14 @@ const PORTFOLIO_DATA = {
       year: 2,
       term: 3,
       link: "https://github.com/Yami2Danchou/aticao-project",
-      manuscript: "https://drive.google.com/file/d/1hCN5DtYwdMJ2EJ8eVdE4vx3ZJGm_SOM5/view?usp=sharing",
-      image: "Image/Projects/AtiCao.jpg", 
-      description: "An App/IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
+      manuscript:
+        "https://drive.google.com/file/d/1hCN5DtYwdMJ2EJ8eVdE4vx3ZJGm_SOM5/view?usp=sharing",
+      image: "Image/Projects/AtiCao.jpg",
+      description:
+        "An App/IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
       featured: true,
-      tags: ["Java", "Mobile App", "Machine Learning", "IoT"]
-    }
+      tags: ["Java", "Mobile App", "Machine Learning", "IoT"],
+    },
   ],
   assessments: [
     {
@@ -88,9 +95,10 @@ const PORTFOLIO_DATA = {
       term: 1,
       link: "https://leafoo-0000.github.io/GreenSense/LandingPage.html",
       image: null,
-      description: "An interactive web case study layout designed to analyze interface designs for green tracking and environmental sustainability systems.",
+      description:
+        "An interactive web case study layout designed to analyze interface designs for green tracking and environmental sustainability systems.",
       featured: true,
-      tags: ["HTML", "CSS", "UI/UX", "Case Study"]
+      tags: ["HTML", "CSS", "UI/UX", "Case Study"],
     },
     {
       id: "asm-mp1-replaceall",
@@ -100,9 +108,10 @@ const PORTFOLIO_DATA = {
       term: 2,
       link: "https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html",
       image: null,
-      description: "A client-side laboratory machine problem implementing live DOM manipulation and programmatic substring text replacement algorithms.",
+      description:
+        "A client-side laboratory machine problem implementing live DOM manipulation and programmatic substring text replacement algorithms.",
       featured: false,
-      tags: ["JavaScript", "DOM Manipulation", "Strings"]
+      tags: ["JavaScript", "DOM Manipulation", "Strings"],
     },
     {
       id: "asm-mp2-searchword",
@@ -112,9 +121,10 @@ const PORTFOLIO_DATA = {
       term: 2,
       link: "https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html",
       image: null,
-      description: "A logical programming exercise focused on building string index parsing and text sequence tracking utilities.",
+      description:
+        "A logical programming exercise focused on building string index parsing and text sequence tracking utilities.",
       featured: false,
-      tags: ["JavaScript", "Search Algorithms", "Logic"]
+      tags: ["JavaScript", "Search Algorithms", "Logic"],
     },
     {
       id: "asm-extra-1",
@@ -124,9 +134,10 @@ const PORTFOLIO_DATA = {
       term: 3,
       link: null,
       image: null,
-      description: "A milestone checkpoint tracking diagnostic software engineering proficiency or course baseline metrics.",
+      description:
+        "A milestone checkpoint tracking diagnostic software engineering proficiency or course baseline metrics.",
       featured: false,
-      tags: ["Testing", "Milestone"]
-    }
-  ]
+      tags: ["Testing", "Milestone"],
+    },
+  ],
 };

@@ -11,7 +11,7 @@
   --tile-text: #1d1d1d;
   --badge-bg: #d6eef7;
   --badge-text: #11405a;
-  
+
   /* Archetype Border Accents */
   --color-project: #3b82f6;
   --color-achievement: #10b981;
@@ -35,38 +35,45 @@ body.dark {
 /* ---------- GLOBAL SITE BASE ---------- */
 body {
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 42%, var(--bg-gradient-end) 100%);
+  background: radial-gradient(
+    circle at top,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-mid) 42%,
+    var(--bg-gradient-end) 100%
+  );
   color: var(--tile-text);
   margin: 0;
   padding: 20px;
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* ---------- HERO HEADER: SIDE-BY-SIDE SPLIT LAYOUT ---------- */
 .profile-card {
   display: flex;
-  flex-direction: row;       
-  align-items: center;       
-  justify-content: center;   
-  gap: 40px;                 
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
   background: linear-gradient(135deg, #1c5f86, #11405a);
   padding: 40px;
   border-radius: 18px;
   color: white;
   box-shadow: 0 12px 30px rgba(17, 64, 90, 0.24);
   margin-bottom: 30px;
-  text-align: left;          
+  text-align: left;
 }
 
 .profile-avatar {
-  width: 180px;              
+  width: 180px;
   height: 180px;
-  border-radius: 50%;        
+  border-radius: 50%;
   object-fit: cover;
   border: 4px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  flex-shrink: 0;            
+  flex-shrink: 0;
 }
 
 .profile-details {
@@ -91,7 +98,7 @@ body {
 .profile-actions {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;           
+  flex-wrap: wrap;
 }
 
 footer {
@@ -105,23 +112,27 @@ footer {
 }
 
 /* ---------- INTERACTIVE EMPOWERMENT (BUTTONS) ---------- */
-button, .btn {
+button,
+.btn {
   padding: 10px 22px;
   cursor: pointer;
   background: linear-gradient(to right, #1aa6b7, #2f8fb1);
   color: white;
   border-radius: 6px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
-  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
 }
 
-button:hover, .btn:hover {
+button:hover,
+.btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- SEMANTIC CONTAINMENT MAPPINGS ---------- */
@@ -150,22 +161,30 @@ ul.tile-list > li.tile {
   color: var(--tile-text);
   padding: 20px;
   border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   border-left: 5px solid transparent;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 ul.tile-list > li.tile:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* Type Accents Implementation */
-li.tile.card-project { border-left-color: var(--color-project); }
-li.tile.card-achievement { border-left-color: var(--color-achievement); }
-li.tile.card-assessment { border-left-color: var(--color-assessment); }
+li.tile.card-project {
+  border-left-color: var(--color-project);
+}
+li.tile.card-achievement {
+  border-left-color: var(--color-achievement);
+}
+li.tile.card-assessment {
+  border-left-color: var(--color-assessment);
+}
 
 .tile-title-link {
   color: var(--accent-blue);
@@ -173,7 +192,9 @@ li.tile.card-assessment { border-left-color: var(--color-assessment); }
   font-weight: bold;
   text-decoration: none;
 }
-.tile-title-link:hover { text-decoration: underline; }
+.tile-title-link:hover {
+  text-decoration: underline;
+}
 
 .tile-description {
   margin: 12px 0;
@@ -231,7 +252,7 @@ li.tile.card-assessment { border-left-color: var(--color-assessment); }
 .portfolio-form textarea {
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   padding: 12px;
   background: #ffffff;
@@ -241,21 +262,25 @@ li.tile.card-assessment { border-left-color: var(--color-assessment); }
 .backup-utilities {
   text-align: center;
   padding: 20px;
-  border-top: 1px dashed rgba(255,255,255,0.1);
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
 }
 
 /* ---------- RESPONSIVE RESPONSIVENESS ---------- */
 @media (max-width: 768px) {
-  .form-grid { grid-template-columns: 1fr; }
-  body { padding: 10px; }
-  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  body {
+    padding: 10px;
+  }
+
   .profile-card {
     flex-direction: column;
     text-align: center;
     gap: 20px;
     padding: 30px 20px;
   }
-  
+
   .profile-avatar {
     width: 140px;
     height: 140px;
@@ -280,7 +305,11 @@ li.tile.card-assessment { border-left-color: var(--color-assessment); }
     padding: 0;
     margin: 10px 0;
   }
-  .hero, .profile-card, #portfolio-form, .backup-utilities, #theme-toggle {
+  .hero,
+  .profile-card,
+  #portfolio-form,
+  .backup-utilities,
+  #theme-toggle {
     display: none !important;
   }
   ul.tile-list > li.tile {
@@ -293,5 +322,5 @@ li.tile.card-assessment { border-left-color: var(--color-assessment); }
 
 /* ---------- Helper ---------- */
 .hidden {
-    display: none !important;
+  display: none !important;
 }
