@@ -1,126 +1,5 @@
 // =========================================================================
-// 1. SINGLE SOURCE OF TRUTH DATA STORE (Hardcoded Database Layer)
-// =========================================================================
-const PORTFOLIO_DATA = {
-  achievements: [
-    {
-      id: "cert-java-core",
-      title: "Java Programming Certification",
-      category: "achievement",
-      year: 2,
-      term: 1,
-      link: null,
-      image: "Image/Certificates/Java Cert.png",
-      description: "Validation of object-oriented concepts, Swing GUI frameworks, and robust class hierarchy models.",
-      featured: true,
-      tags: ["Java", "Swing", "OOP"]
-    },
-    {
-      id: "cert-innovision2028",
-      title: "CCIS InnoVision 2028",
-      category: "achievement",
-      year: 2,
-      term: 3,
-      link: null,
-      image: "Image/Certificates/Certificate.png",
-      description: "Reflection: Collaborating on project exhibitions during the college innovation events emphasizes the critical importance of modular class structures, clear interface contracts, and effective technical communication within rapid software teams.",
-      featured: true,
-      tags: ["Presentation", "Showcase"]
-    }
-  ],
-  projects: [
-    {
-      id: "proj-Easy-E",
-      title: "Easy-E (Event Management System)",
-      category: "project",
-      year: 1,
-      term: 3,
-      link: "https://github.com/Leafoo-0000/Easy-E/",
-      image: null, 
-      description: "A comprehensive event platform designed to streamline room bookings, scheduling matrix constraints, and student-led college activities.",
-      featured: true,
-      tags: ["Java", "Swing", "SQL"]
-    },
-    {
-      id: "proj-Just-Do-It",
-      title: "Just-Do-It Web App",
-      category: "project",
-      year: 2,
-      term: 2,
-      link: "https://Just-Do-It.vercel.app/",
-      image: null, 
-      description: "A sustainability habit tracker application utilizing milestone counters to reinforce eco-friendly routines and personal tracking metrics.",
-      featured: true,
-      tags: ["Next.js", "React", "Supabase"]
-    },
-    {
-      id: "proj-AtiCao",
-      title: "AtiCao: Davao IoT Cacao Disease Risk Monitor",
-      category: "project",
-      year: 2,
-      term: 3,
-      link: "https://github.com/Yami2Danchou/aticao-project",
-      manuscript: "https://drive.google.com/file/d/1hCN5DtYwdMJ2EJ8eVdE4vx3ZJGm_SOM5/view?usp=sharing",
-      image: "Image/Projects/AtiCao.jpg", 
-      description: "An App/IoT monitoring system classifying 8 distinct cacao health categories via custom Roboflow datasets, providing real-time disease diagnostic metrics.",
-      featured: true,
-      tags: ["Java", "Mobile App", "Machine Learning", "IoT"]
-    }
-  ],
-  assessments: [
-    {
-      id: "asm-it103-greensense",
-      title: "IT103 Case Study: GreenSense",
-      category: "assessment",
-      year: 1,
-      term: 1,
-      link: "https://leafoo-0000.github.io/GreenSense/LandingPage.html",
-      image: null,
-      description: "An interactive web case study layout designed to analyze interface designs for green tracking and environmental sustainability systems.",
-      featured: true,
-      tags: ["HTML", "CSS", "UI/UX", "Case Study"]
-    },
-    {
-      id: "asm-mp1-replaceall",
-      title: "MP1: ReplaceAll",
-      category: "assessment",
-      year: 1,
-      term: 2,
-      link: "https://leafoo-0000.github.io/Hands-on-Activity/MP1/index.html",
-      image: null,
-      description: "A client-side laboratory machine problem implementing live DOM manipulation and programmatic substring text replacement algorithms.",
-      featured: false,
-      tags: ["JavaScript", "DOM Manipulation", "Strings"]
-    },
-    {
-      id: "asm-mp2-searchword",
-      title: "MP2: SearchWord",
-      category: "assessment",
-      year: 1,
-      term: 2,
-      link: "https://leafoo-0000.github.io/Hands-on-Activity/MP2/index.html",
-      image: null,
-      description: "A logical programming exercise focused on building string index parsing and text sequence tracking utilities.",
-      featured: false,
-      tags: ["JavaScript", "Search Algorithms", "Logic"]
-    },
-    {
-      id: "asm-extra-1",
-      title: "Extra Assessment 1",
-      category: "assessment",
-      year: 1,
-      term: 3,
-      link: null,
-      image: null,
-      description: "A milestone checkpoint tracking diagnostic software engineering proficiency or course baseline metrics.",
-      featured: false,
-      tags: ["Testing", "Milestone"]
-    }
-  ]
-};
-
-// =========================================================================
-// 2. SYSTEM ROUTER & INITIALIZATION ENGINE
+// 1. SYSTEM ROUTER & INITIALIZATION ENGINE
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
   initGlobalTheme();
@@ -138,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================================================
-// 3. ENGINE A: HOMEPAGE PRESENTATION RENDERING LAYER
+// 2. ENGINE A: HOMEPAGE PRESENTATION RENDERING LAYER
 // =========================================================================
 function renderHomepageShowcase() {
   const projectList = document.getElementById("portfolio-projects");
@@ -159,14 +38,15 @@ function renderHomepageShowcase() {
 }
 
 // =========================================================================
-// 4. ENGINE B: TIMELINE ARCHIVE RENDERING LAYER (12-Bucket Matrix)
+// 3. ENGINE B: TIMELINE ARCHIVE RENDERING LAYER (12-Bucket Matrix)
 // =========================================================================
 function renderArchiveTimeline() {
+  // Clear layout and inject an embedded semantic grid container inside each term bucket block
   for (let y = 1; y <= 4; y++) {
     for (let t = 1; t <= 3; t++) {
       const bucket = document.getElementById(`bucket-y${y}-t${t}`);
       if (bucket) {
-        bucket.innerHTML = `<h4>Term ${t}</h4>`;
+        bucket.innerHTML = `<h4>Term ${t}</h4><ul class="tile-list" id="grid-y${y}-t${t}"></ul>`;
       }
     }
   }
@@ -179,29 +59,33 @@ function renderArchiveTimeline() {
 
   const bucketRegistry = {};
 
+  // Distribute records to their matching academic grid matrix location
   allTimelineItems.forEach(item => {
-    const bucketId = `bucket-y${item.year}-t${item.term}`;
-    const bucketElement = document.getElementById(bucketId);
+    const gridId = `grid-y${item.year}-t${item.term}`;
+    const gridContainer = document.getElementById(gridId);
 
-    if (bucketElement) {
-      bucketElement.innerHTML += createCardHTML(item);
-      bucketRegistry[bucketId] = (bucketRegistry[bucketId] || 0) + 1;
+    if (gridContainer) {
+      gridContainer.innerHTML += createCardHTML(item);
+      bucketRegistry[gridId] = (bucketRegistry[gridId] || 0) + 1;
     }
   });
 
+  // Evaluate empty grid modules and swap them cleanly for subtle fallback placeholders
   for (let y = 1; y <= 4; y++) {
     for (let t = 1; t <= 3; t++) {
-      const targetId = `bucket-y${y}-t${t}`;
-      const element = document.getElementById(targetId);
-      if (element && !bucketRegistry[targetId]) {
-        element.innerHTML += `<div class="bucket-placeholder">No elements mapped to this block.</div>`;
+      const gridId = `grid-y${y}-t${t}`;
+      const gridContainer = document.getElementById(gridId);
+      if (gridContainer && !bucketRegistry[gridId]) {
+        gridContainer.remove(); // Drop the structural list container completely if unused
+        const bucket = document.getElementById(`bucket-y${y}-t${t}`);
+        bucket.innerHTML += `<div class="bucket-placeholder">No elements mapped to this block.</div>`;
       }
     }
   }
 }
 
 // =========================================================================
-// 5. UTILITY ENGINE: STANDARDIZED DOM COMPONENT GENERATOR
+// 4. UTILITY ENGINE: STANDARDIZED DOM COMPONENT GENERATOR
 // =========================================================================
 function createCardHTML(item) {
   const imageMarkup = item.image ? `<img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:6px; margin-bottom:10px; object-fit:cover;" />` : '';
@@ -234,7 +118,7 @@ function createCardHTML(item) {
 }
 
 // =========================================================================
-// 6. CONTROL RUNTIME: IN-MEMORY ARCHIVE SEARCH & FILTER CONTROLLER
+// 5. CONTROL RUNTIME: IN-MEMORY ARCHIVE SEARCH & FILTER CONTROLLER
 // =========================================================================
 function setupArchiveFilters() {
   const searchInput = document.getElementById("archive-search");
@@ -267,13 +151,12 @@ function setupArchiveFilters() {
 }
 
 // =========================================================================
-// 7. GLOBAL THEME MANAGER LAYER (With file:// Fail-safes)
+// 6. GLOBAL THEME MANAGER LAYER (With file:// Fail-safes)
 // =========================================================================
 function initGlobalTheme() {
   const themeToggleBtn = document.getElementById("theme-toggle");
-  let savedTheme = "dark"; // Default fallback structure
+  let savedTheme = "dark"; 
 
-  // Defensive block prevents file:// environments from crashing engine execution
   try {
     const activeState = localStorage.getItem("portfolio_theme_state");
     if (activeState) {
@@ -296,7 +179,7 @@ function initGlobalTheme() {
       try {
         localStorage.setItem("portfolio_theme_state", currentTheme);
       } catch (saveException) {
-        // Silently capture local write limitations
+        // Capture local writing restriction cases safely
       }
     });
   }
